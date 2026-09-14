@@ -42,3 +42,40 @@
   background: #3f3f50;
 }
 
+/* Regras de impressão universais para o navegador e iframe */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .no-print,
+  button {
+    display: none !important;
+  }
+
+  .print-modal-overlay {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    backdrop-filter: none !important;
+  }
+
+  .print-modal-box {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .print-area {
+    color: #000000 !important;
+  }
+
+  .print-area * {
+    color: #000000 !important;
+    border-color: #000000 !important;
+  }
+}

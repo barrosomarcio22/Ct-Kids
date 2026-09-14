@@ -65,3 +65,19 @@ export function formatarDataExtenso(dataStr: string): string {
     return dataStr;
   }
 }
+
+// Mensagem padrão para suporte no WhatsApp da equipe do CT
+export const MENSAGEM_SUPORTE_CT =
+  'Olá equipe do CT Iron Kings! Tenho uma dúvida sobre o Espaço Mini Kings (agendamento das crianças).';
+
+/**
+ * Gera link direto para o WhatsApp do suporte
+ */
+export function getLinkWhatsAppSuporte(telefoneCustom?: string): string {
+  const msg = encodeURIComponent(MENSAGEM_SUPORTE_CT);
+  const cleanPhone = telefoneCustom ? telefoneCustom.replace(/\D/g, '') : '';
+  if (cleanPhone) {
+    return `https://wa.me/${cleanPhone}?text=${msg}`;
+  }
+  return `https://wa.me/?text=${msg}`;
+}

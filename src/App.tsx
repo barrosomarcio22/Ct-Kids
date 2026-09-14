@@ -13,6 +13,10 @@ import { BookingForm } from './components/BookingForm';
 import { CapacityOverview } from './components/CapacityOverview';
 import { BookingsList } from './components/BookingsList';
 import { VercelGuideModal } from './components/VercelGuideModal';
+import { MyBookingsModal } from './components/MyBookingsModal';
+import { StaffAuthModal } from './components/StaffAuthModal';
+import { QrCodeModal } from './components/QrCodeModal';
+import { WhatsAppSupportButton } from './components/WhatsAppSupportButton';
 import { CheckCircleIcon } from './components/Icons';
 
 export default function App() {
@@ -24,15 +28,37 @@ export default function App() {
   const [isDeletingId, setIsDeletingId] = useState<string | null>(null);
   const [isUpdatingStatusId, setIsUpdatingStatusId] = useState<string | null>(null);
   const [showGuideModal, setShowGuideModal] = useState<boolean>(false);
+  const [showMyBookings, setShowMyBookings] = useState<boolean>(false);
+  const [showStaffAuth, setShowStaffAuth] = useState<boolean>(false);
+  const [showQrCodeModal, setShowQrCodeModal] = useState<boolean>(false);
+  const [savedTelefone, setSavedTelefone] = useState<string>('');
   const [status, setStatus] = useState<FirebaseConnectionStatus>(getFirebaseStatus());
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'agendar' | 'portaria'>('agendar');
+
+  // Recupera telefone salvo do cliente no localStorage
+  useEffect(() => {
+    try {
+      const fone = localStorage.getItem('mini_kings_responsavel_fone');
+      if (fone) setSavedTelefone(fone);
+    } catch {
+      // Ignora
+    }
+  }, []);
 
   // Total de crianças presentes no espaço agora
   const totalPresentesDia = useMemo(
     () => agendamentos.filter((a) => a.status === 'presente').length,
     [agendamentos]
   );
+
+  // Verifica se o responsável atual já possui agendamentos hoje
+  const temMeusAgendamentosHoje = useMemo(() => {
+    if (!savedTelefone) return false;
+    const digitsSaved = savedTelefone.replace(/\D/g, '');
+    if (!digitsSaved) return false;
+    return agendamentos.some((a) => a.responsavelTelefone.replace(/\D/g, '') === digitsSaved);
+  }, [agendamentos, savedTelefone]);
 
   // Escuta os agendamentos da data selecionada em tempo real (Firestore)
   useEffect(() => {
@@ -83,23 +109,36 @@ export default function App() {
     setTimeout(() => setToastMessage(null), 4000);
   };
 
-  // Handler de novo agendamento
+  // Handler de novo agendamento (suporta 1 ou mais irmãos simultaneamente)
   const handleNovoAgendamento = async (dados: {
     responsavelNome: string;
     responsavelTelefone: string;
-    criancaNome: string;
-    criancaIdade: number;
+    criancas: Array<{ nome: string; idade: number }>;
     horario: string;
     observacoes: string;
   }) => {
     setIsLoading(true);
     try {
-      await salvarAgendamento({
-        ...dados,
-        data: dataSelecionada,
-      });
+      for (const crianca of dados.criancas) {
+        await salvarAgendamento({
+          responsavelNome: dados.responsavelNome,
+          responsavelTelefone: dados.responsavelTelefone,
+          criancaNome: crianca.nome,
+          criancaIdade: crianca.idade,
+          horario: dados.horario,
+          observacoes: dados.observacoes,
+          data: dataSelecionada,
+        });
+      }
 
-      showToast(`Vaga confirmada para ${dados.criancaNome}!`);
+      // Atualiza o telefone salvo em memória
+      setSavedTelefone(dados.responsavelTelefone);
+
+      if (dados.criancas.length > 1) {
+        showToast(`Vagas confirmadas para ${dados.criancas.map((c) => c.nome).join(' e ')}!`);
+      } else {
+        showToast(`Vaga confirmada para ${dados.criancas[0].nome}!`);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -139,6 +178,41 @@ export default function App() {
     }
   };
 
+  // Handler de Check-in Presencial / Balcão
+  const handleQuickCheckIn = async (dados: {
+    responsavelNome: string;
+    responsavelTelefone: string;
+    criancaNome: string;
+    criancaIdade: number;
+    horario: string;
+    observacoes: string;
+    fazerCheckInImediato: boolean;
+  }) => {
+    setIsLoading(true);
+    try {
+      await salvarAgendamento({
+        responsavelNome: dados.responsavelNome,
+        responsavelTelefone: dados.responsavelTelefone,
+        criancaNome: dados.criancaNome,
+        criancaIdade: dados.criancaIdade,
+        horario: dados.horario,
+        observacoes: dados.observacoes,
+        data: dataSelecionada,
+        status: dados.fazerCheckInImediato ? 'presente' : 'agendado',
+        checkInEm: dados.fazerCheckInImediato ? Date.now() : undefined,
+      });
+
+      setSavedTelefone(dados.responsavelTelefone);
+      showToast(
+        dados.fazerCheckInImediato
+          ? `Check-in imediato realizado para ${dados.criancaNome}!`
+          : `Agendamento criado para ${dados.criancaNome}!`
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#09090c] text-zinc-100 flex flex-col font-sans selection:bg-red-900 selection:text-white">
       {/* Toast de notificação */}
@@ -159,6 +233,10 @@ export default function App() {
         totalPresentesDia={totalPresentesDia}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        onRequestPortaria={() => setShowStaffAuth(true)}
+        onOpenMyBookings={() => setShowMyBookings(true)}
+        hasMyBookings={temMeusAgendamentosHoje}
+        onOpenQrCode={() => setShowQrCodeModal(true)}
       />
 
       {/* Conteúdo Principal */}
@@ -173,6 +251,8 @@ export default function App() {
               onSubmit={handleNovoAgendamento}
               isLoading={isLoading}
               dataSelecionada={dataSelecionada}
+              onOpenMyBookings={() => setShowMyBookings(true)}
+              temAgendamentosHoje={temMeusAgendamentosHoje}
             />
           </div>
         )}
@@ -218,6 +298,7 @@ export default function App() {
                   agendamentos={agendamentos}
                   onDelete={handleDeletarAgendamento}
                   onToggleCheckIn={handleToggleCheckIn}
+                  onSaveQuickCheckIn={handleQuickCheckIn}
                   isDeletingId={isDeletingId}
                   isUpdatingStatusId={isUpdatingStatusId}
                   dataSelecionada={dataSelecionada}
@@ -249,7 +330,13 @@ export default function App() {
             <span>•</span>
             <button
               type="button"
-              onClick={() => setActiveTab(activeTab === 'agendar' ? 'portaria' : 'agendar')}
+              onClick={() => {
+                if (activeTab === 'agendar') {
+                  setShowStaffAuth(true);
+                } else {
+                  setActiveTab('agendar');
+                }
+              }}
               className="text-zinc-400 hover:text-red-400 transition cursor-pointer"
             >
               {activeTab === 'agendar' ? 'Acesso Portaria' : 'Agendar Horário'}
@@ -258,11 +345,41 @@ export default function App() {
         </div>
       </footer>
 
+      {/* Modal: Minhas Vagas (Exclusivo para o Cliente) */}
+      <MyBookingsModal
+        isOpen={showMyBookings}
+        onClose={() => setShowMyBookings(false)}
+        agendamentos={agendamentos}
+        onCancel={handleDeletarAgendamento}
+        isCancellingId={isDeletingId}
+        savedTelefone={savedTelefone}
+        dataSelecionada={dataSelecionada}
+      />
+
+      {/* Modal: Autenticação PIN da Portaria/Recepção */}
+      <StaffAuthModal
+        isOpen={showStaffAuth}
+        onClose={() => setShowStaffAuth(false)}
+        onSuccess={() => {
+          setShowStaffAuth(false);
+          setActiveTab('portaria');
+        }}
+      />
+
       {/* Modal de Instruções Vercel / Firebase */}
       <VercelGuideModal
         isOpen={showGuideModal}
         onClose={() => setShowGuideModal(false)}
       />
+
+      {/* Modal: Display de Balcão e QR Code */}
+      <QrCodeModal
+        isOpen={showQrCodeModal}
+        onClose={() => setShowQrCodeModal(false)}
+      />
+
+      {/* Botão Flutuante de Suporte / Dúvidas via WhatsApp */}
+      <WhatsAppSupportButton />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircleIcon, CalendarIcon, UserIcon } from './Icons';
+import { CheckCircleIcon, CalendarIcon, LockIcon, CrownIcon, QrCodeIcon } from './Icons';
 import { FirebaseConnectionStatus } from '../types';
 import { getHojeLocalString, getAmanhaLocalString } from '../constants';
 
@@ -12,6 +12,10 @@ interface HeaderProps {
   totalPresentesDia?: number;
   activeTab: 'agendar' | 'portaria';
   setActiveTab: (tab: 'agendar' | 'portaria') => void;
+  onRequestPortaria: () => void;
+  onOpenMyBookings: () => void;
+  hasMyBookings?: boolean;
+  onOpenQrCode: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -23,6 +27,10 @@ export const Header: React.FC<HeaderProps> = ({
   totalPresentesDia = 0,
   activeTab,
   setActiveTab,
+  onRequestPortaria,
+  onOpenMyBookings,
+  hasMyBookings = false,
+  onOpenQrCode,
 }) => {
   const hoje = getHojeLocalString();
   const amanha = getAmanhaLocalString();
@@ -50,18 +58,42 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Alternador discreto de modo: Cliente vs Portaria */}
+        {/* Botões do Topo com Foco no Cliente */}
         <div className="flex items-center gap-2">
+          {/* Botão QR Code para Display de Balcão */}
+          <button
+            type="button"
+            onClick={onOpenQrCode}
+            className="text-xs text-zinc-300 hover:text-white border border-zinc-800 hover:border-zinc-700 bg-zinc-900/80 hover:bg-zinc-800 px-2.5 sm:px-3 py-1.5 rounded-lg transition font-semibold flex items-center gap-1.5 cursor-pointer shadow-sm"
+            title="Ver e Imprimir Placa com QR Code para o balcão da academia"
+          >
+            <QrCodeIcon className="w-4 h-4 text-red-500" />
+            <span className="hidden sm:inline">QR Code</span>
+          </button>
+
           {activeTab === 'agendar' ? (
-            <button
-              type="button"
-              onClick={() => setActiveTab('portaria')}
-              className="text-xs text-zinc-400 hover:text-zinc-200 border border-zinc-800 hover:border-zinc-700 bg-zinc-900/80 px-3 py-1.5 rounded-lg transition font-medium flex items-center gap-1.5 cursor-pointer"
-              title="Acesso exclusivo para instrutores e recepção"
-            >
-              <CheckCircleIcon className="w-3.5 h-3.5 text-zinc-500" />
-              <span>Portaria / Check-in</span>
-            </button>
+            <>
+              {hasMyBookings && (
+                <button
+                  type="button"
+                  onClick={onOpenMyBookings}
+                  className="text-xs text-amber-300 hover:text-amber-200 border border-amber-500/40 bg-amber-950/40 hover:bg-amber-950/60 px-3 py-1.5 rounded-lg transition font-bold flex items-center gap-1.5 cursor-pointer shadow-sm"
+                  title="Ver detalhes das vagas agendadas para sua família"
+                >
+                  <CrownIcon className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="hidden sm:inline">Minhas Vagas</span>
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={onRequestPortaria}
+                className="text-xs text-zinc-400 hover:text-zinc-200 border border-zinc-800 hover:border-zinc-700 bg-zinc-900/80 px-2.5 sm:px-3 py-1.5 rounded-lg transition font-medium flex items-center gap-1.5 cursor-pointer"
+                title="Acesso exclusivo para instrutores e recepção"
+              >
+                <LockIcon className="w-3.5 h-3.5 text-zinc-500" />
+                <span className="text-[11px] sm:text-xs">Portaria</span>
+              </button>
+            </>
           ) : (
             <button
               type="button"
