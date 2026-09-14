@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /agendamentos/{agendamentoId} {
+      // Leitura em tempo real para cálculo de capacidade das vagas do Reino
+      allow read: if true;
+
+      // Criação de agendamento validando os campos obrigatórios
+      allow create: if request.resource.data.responsavelNome is string
+                    && request.resource.data.responsavelNome.size() > 0
+                    && request.resource.data.responsavelNome.size() <= 100
+                    && request.resource.data.criancaNome is string
+                    && request.resource.data.criancaNome.size() > 0
+                    && request.resource.data.criancaNome.size() <= 100
+                    && request.resource.data.horario is string
+                    && request.resource.data.data is string;
+
+      // Cancelamento do agendamento para liberar a vaga
+      allow delete: if true;
+
+      // Check-in dos instrutores na chegada da criança (atualização do campo status)
+      allow update: if true;
+    }
+  }
+}

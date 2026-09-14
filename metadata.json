@@ -1,0 +1,6 @@
+{
+  "name": "Espaço Mini Kings - CT IRON KINGS",
+  "description": "Sistema de agendamento do Espaço Mini Kings no CT IRON KINGS. Agendamento com controle de capacidade em tempo real, vagas no Reino e integração com Firebase Firestore.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
