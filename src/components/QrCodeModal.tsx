@@ -72,7 +72,7 @@ export const QrCodeModal: React.FC<QrCodeModalProps> = ({ isOpen, onClose }) => 
         <html lang="pt-BR">
           <head>
             <meta charset="utf-8" />
-            <title>Placa QR Code - Espaço Mini Kings CT Iron Kings</title>
+            <title>Placa QR Code - Espaço IRON KIDS CT Iron Kings</title>
             <style>
               @page {
                 size: A4 portrait;
@@ -196,11 +196,11 @@ export const QrCodeModal: React.FC<QrCodeModalProps> = ({ isOpen, onClose }) => 
             <div class="placa-container">
               <div class="logo-coroa">👑</div>
               <div class="ct-nome">CT IRON KINGS</div>
-              <div class="titulo">REINO MINI KINGS</div>
+              <div class="titulo">ESPAÇO IRON KIDS</div>
               <div class="subtitulo">Aponte a câmera do seu celular para agendar a vaga do seu filho</div>
               
               <div class="qr-box">
-                <img class="qr-img" src="${dataUrl}" alt="QR Code Mini Kings" />
+                <img class="qr-img" src="${dataUrl}" alt="QR Code IRON KIDS" />
               </div>
               
               <div>
@@ -274,17 +274,21 @@ export const QrCodeModal: React.FC<QrCodeModalProps> = ({ isOpen, onClose }) => 
         <div ref={printableRef} className="print-area">
           {/* Topo / Brasão CT Iron Kings */}
           <div className="text-center pb-4 border-b border-zinc-800">
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-red-950/80 border border-red-800 text-red-500 mb-2">
-              <CrownIcon className="w-7 h-7" />
+            <div className="flex justify-center mb-2">
+              <img
+                src="/logo.svg"
+                alt="IRON KIDS"
+                className="w-16 h-16 object-contain filter drop-shadow-[0_2px_8px_rgba(215,25,33,0.35)]"
+              />
             </div>
             <h3 className="font-display font-black text-xs uppercase tracking-widest text-red-500">
               CT Iron Kings
             </h3>
-            <h2 className="font-display font-black text-xl text-white tracking-tight">
-              REINO MINI KINGS
+            <h2 className="font-display font-black text-2xl text-white tracking-tight">
+              ESPAÇO IRON KIDS
             </h2>
             <p className="text-xs text-zinc-400 mt-0.5">
-              Aponte a câmera do celular para agendar a vaga do seu filho
+              Aponte a câmera do celular para agendar o treino do seu filho
             </p>
           </div>
 
@@ -294,7 +298,7 @@ export const QrCodeModal: React.FC<QrCodeModalProps> = ({ isOpen, onClose }) => 
               {dataUrl ? (
                 <img
                   src={dataUrl}
-                  alt="QR Code Espaço Mini Kings"
+                  alt="QR Code Espaço IRON KIDS"
                   className="w-56 h-56 sm:w-64 sm:h-64 object-contain rounded-lg block"
                 />
               ) : (

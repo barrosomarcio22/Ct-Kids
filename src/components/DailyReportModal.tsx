@@ -51,7 +51,7 @@ export const DailyReportModal: React.FC<DailyReportModalProps> = ({
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', `relatorio_mini_kings_${dataSelecionada.replace(/\//g, '-')}.csv`);
+    link.setAttribute('download', `relatorio_iron_kids_${dataSelecionada.replace(/\//g, '-')}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -74,7 +74,7 @@ export const DailyReportModal: React.FC<DailyReportModalProps> = ({
           </div>
           <div>
             <h3 className="font-display font-black text-white text-base">
-              Relatório Diário do Espaço Mini Kings
+              Relatório Diário do Espaço IRON KIDS
             </h3>
             <p className="text-xs text-zinc-400">
               Data: <strong className="text-white">{dataSelecionada}</strong>

@@ -113,7 +113,7 @@ export const CapacityOverview: React.FC<CapacityOverviewProps> = ({
                 />
               </div>
 
-              {/* Lista compacta de nomes dos Mini Kings agendados neste horário */}
+              {/* Lista compacta de nomes dos Iron Kids agendados neste horário */}
               {cap.agendamentos.length > 0 && (
                 <div className="mt-2 flex flex-wrap gap-1">
                   {cap.agendamentos.map((ag) => {

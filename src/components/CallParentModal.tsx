@@ -15,15 +15,15 @@ export const CallParentModal: React.FC<CallParentModalProps> = ({ agendamento, o
   const mensagensProntas = [
     {
       titulo: '🔔 Treino Finalizado / Buscar Criança',
-      texto: `Olá ${agendamento.responsavelNome}! Aqui é da equipe do Espaço Mini Kings do CT Iron Kings. O horário do treino finalizou e ${agendamento.criancaNome} está aguardando você aqui na recepção do espaço kids! 😊`,
+      texto: `Olá ${agendamento.responsavelNome}! Aqui é da equipe do Espaço IRON KIDS do CT Iron Kings. O horário do treino finalizou e ${agendamento.criancaNome} está aguardando você aqui na recepção do espaço kids! 😊`,
     },
     {
       titulo: '👶 Criança Chamando pelo Responsável',
-      texto: `Olá ${agendamento.responsavelNome}! Aqui é do Espaço Mini Kings. ${agendamento.criancaNome} está chamando por você. Poderia dar uma passadinha aqui na recepção do espaço kids, por favor?`,
+      texto: `Olá ${agendamento.responsavelNome}! Aqui é do Espaço IRON KIDS. ${agendamento.criancaNome} está chamando por você. Poderia dar uma passadinha aqui na recepção do espaço kids, por favor?`,
     },
     {
       titulo: '⚠️ Cuidados / Necessidade Específica',
-      texto: `Olá ${agendamento.responsavelNome}! Equipe do Espaço Mini Kings aqui. Precisamos de você rapidinho na portaria para falar sobre ${agendamento.criancaNome}. Obrigado!`,
+      texto: `Olá ${agendamento.responsavelNome}! Equipe do Espaço IRON KIDS aqui. Precisamos de você rapidinho na portaria para falar sobre ${agendamento.criancaNome}. Obrigado!`,
     },
   ];
 

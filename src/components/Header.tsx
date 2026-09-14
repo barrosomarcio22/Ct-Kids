@@ -42,18 +42,18 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-3">
           <img
             src="/logo.svg"
-            alt="CT IRON KINGS"
-            className="w-12 h-12 object-contain filter drop-shadow-[0_2px_8px_rgba(215,25,33,0.3)]"
+            alt="IRON KIDS - CT IRON KINGS"
+            className="w-12 h-12 sm:w-14 sm:h-14 object-contain filter drop-shadow-[0_2px_10px_rgba(215,25,33,0.35)] transition-transform hover:scale-105"
           />
           <div>
-            <span className="font-display font-black text-xs text-red-500 tracking-wider uppercase block">
+            <span className="font-display font-black text-[11px] text-red-500 tracking-wider uppercase block">
               CT IRON KINGS
             </span>
-            <h1 className="font-display text-lg sm:text-xl font-black text-white tracking-tight leading-none">
-              ESPAÇO MINI KINGS
+            <h1 className="font-display text-xl sm:text-2xl font-black text-white tracking-tight leading-none flex items-center gap-1.5">
+              <span>IRON KIDS</span>
             </h1>
             <span className="text-[11px] text-zinc-400 block mt-0.5">
-              Agendamento de horário
+              Espaço Kids & Agendamento de Treino
             </span>
           </div>
         </div>

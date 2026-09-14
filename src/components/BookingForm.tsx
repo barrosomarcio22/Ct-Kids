@@ -217,7 +217,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     const plural = reservaConfirmada.criancas.length > 1;
 
     const msg = encodeURIComponent(
-      `*CT IRON KINGS - ESPAÇO MINI KINGS*\n\n` +
+      `*CT IRON KINGS - ESPAÇO IRON KIDS*\n\n` +
       `✅ *${plural ? 'Vagas Agendadas com Sucesso!' : 'Vaga Agendada com Sucesso!'}*\n` +
       `${criancasTexto}\n` +
       `📅 *Data:* ${reservaConfirmada.data}\n` +
@@ -233,13 +233,23 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     <div className="bg-[#121217] border border-zinc-800/90 rounded-2xl p-5 sm:p-7 shadow-2xl relative">
       {/* Título Direto com Acesso Rápido a "Meus Agendamentos" */}
       <div className="border-b border-zinc-800/80 pb-4 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div>
-          <h2 className="font-display text-xl sm:text-2xl font-black text-white tracking-tight">
-            Agendar Horário no Espaço Kids
-          </h2>
-          <p className="text-zinc-400 text-xs sm:text-sm mt-1">
-            {formatarDataExtenso(dataSelecionada)} • Escolha o horário e garanta as vagas.
-          </p>
+        <div className="flex items-center gap-3.5">
+          <img
+            src="/logo.svg"
+            alt="IRON KIDS"
+            className="w-12 h-12 sm:w-14 sm:h-14 object-contain filter drop-shadow-[0_2px_8px_rgba(215,25,33,0.3)] hidden xs:block"
+          />
+          <div>
+            <span className="font-display font-black text-[10px] text-red-500 uppercase tracking-widest block">
+              CT Iron Kings
+            </span>
+            <h2 className="font-display text-xl sm:text-2xl font-black text-white tracking-tight">
+              Agendar Vaga no IRON KIDS
+            </h2>
+            <p className="text-zinc-400 text-xs sm:text-sm mt-0.5">
+              {formatarDataExtenso(dataSelecionada)} • Escolha o horário e garanta as vagas.
+            </p>
+          </div>
         </div>
 
         {temAgendamentosHoje && (
@@ -664,15 +674,15 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             }`}
           >
             {isLoading
-              ? 'Confirmando Vagas no Reino...'
+              ? 'Confirmando Vagas no IRON KIDS...'
               : slotInsuficiente
               ? 'Vagas Insuficientes'
               : totalVagasNecessarias > 1
-              ? `Confirmar Agendamento (${totalVagasNecessarias} Irmãos)`
+              ? `Confirmar Agendamento (${totalVagasNecessarias} Atletas)`
               : 'Confirmar Agendamento'}
           </button>
           <p className="text-center text-[11px] text-zinc-500 mt-2">
-            Ao chegar ao CT, basta apresentar o nome na recepção do Espaço Mini Kings.
+            Ao chegar ao CT, basta apresentar o nome na recepção do Espaço IRON KIDS.
           </p>
 
           {/* Link direto para Suporte CT no WhatsApp */}

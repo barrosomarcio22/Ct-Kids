@@ -143,7 +143,7 @@ export const BookingsList: React.FC<BookingsListProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="font-display text-red-500 font-bold text-xs uppercase tracking-wider">
-                Reino Mini Kings
+                Espaço IRON KIDS
               </span>
               <span className="text-zinc-500 text-xs">•</span>
               <span className="text-zinc-400 text-xs font-medium">Portaria & Recepção de Instrutores</span>
@@ -284,11 +284,11 @@ export const BookingsList: React.FC<BookingsListProps> = ({
           <div className="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-3">
             <CastleIcon className="w-6 h-6 text-zinc-600" />
           </div>
-          <h3 className="text-sm font-bold text-zinc-300">Nenhum Mini King encontrado</h3>
+          <h3 className="text-sm font-bold text-zinc-300">Nenhum Iron Kid encontrado</h3>
           <p className="text-xs text-zinc-500 mt-1 max-w-sm">
             {busca || filtroHorario !== 'todos' || filtroStatus !== 'todos'
               ? 'Nenhum resultado para os filtros selecionados. Tente limpar os filtros ou a busca.'
-              : `Não há agendamentos para ${dataSelecionada}. Todas as vagas deste dia estão disponíveis no Reino.`}
+              : `Não há agendamentos para ${dataSelecionada}. Todas as vagas deste dia estão disponíveis no IRON KIDS.`}
           </p>
         </div>
       ) : (

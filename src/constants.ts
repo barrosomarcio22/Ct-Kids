@@ -68,7 +68,7 @@ export function formatarDataExtenso(dataStr: string): string {
 
 // Mensagem padrão para suporte no WhatsApp da equipe do CT
 export const MENSAGEM_SUPORTE_CT =
-  'Olá equipe do CT Iron Kings! Tenho uma dúvida sobre o Espaço Mini Kings (agendamento das crianças).';
+  'Olá equipe do CT Iron Kings! Tenho uma dúvida sobre o Espaço IRON KIDS (agendamento das crianças).';
 
 /**
  * Gera link direto para o WhatsApp do suporte

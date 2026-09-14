@@ -2,7 +2,7 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /agendamentos/{agendamentoId} {
-      // Leitura em tempo real para cálculo de capacidade das vagas do Reino
+      // Leitura em tempo real para cálculo de capacidade das vagas do Espaço IRON KIDS
       allow read: if true;
 
       // Criação de agendamento validando os campos obrigatórios

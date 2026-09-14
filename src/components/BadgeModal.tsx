@@ -175,11 +175,11 @@ export const BadgeModal: React.FC<BadgeModalProps> = ({ agendamento, onClose }) 
             <div class="cracha">
               <div class="coroa">👑</div>
               <div class="ct">CT IRON KINGS</div>
-              <div class="titulo">REINO MINI KINGS</div>
-              <div class="sub">Crachá de Identificação Kids</div>
+              <div class="titulo">ESPAÇO IRON KIDS</div>
+              <div class="sub">Crachá de Identificação do Atleta</div>
               
               <div class="box-crianca">
-                <div class="label-mini-king">Mini King</div>
+                <div class="label-mini-king">Iron Kid</div>
                 <div class="nome-crianca">${agendamento.criancaNome}</div>
                 <div class="idade">${agendamento.criancaIdade} ${agendamento.criancaIdade === 1 ? 'ano' : 'anos'}</div>
               </div>
@@ -240,7 +240,7 @@ export const BadgeModal: React.FC<BadgeModalProps> = ({ agendamento, onClose }) 
         printWindow.document.write(`
           <html>
             <body style="font-family:sans-serif; text-align:center; padding:20px;">
-              <h2>👑 CT IRON KINGS - REINO MINI KINGS</h2>
+              <h2>👑 CT IRON KINGS - ESPAÇO IRON KIDS</h2>
               <hr/>
               <h1 style="font-size:26px; margin:15px 0;">${agendamento.criancaNome}</h1>
               <p><strong>Idade:</strong> ${agendamento.criancaIdade} anos</p>
@@ -264,7 +264,7 @@ export const BadgeModal: React.FC<BadgeModalProps> = ({ agendamento, onClose }) 
   };
 
   const handleCopySummary = async () => {
-    const text = `👑 CRACHÁ MINI KINGS - CT IRON KINGS\nCriança: ${agendamento.criancaNome} (${agendamento.criancaIdade} anos)\nResponsável: ${agendamento.responsavelNome} (${agendamento.responsavelTelefone})\nHorário: ${agendamento.horario}\nEntrada: ${horaCheckIn || 'Aguardando'}${agendamento.observacoes ? `\nCuidados: ${agendamento.observacoes}` : ''}`;
+    const text = `👑 CRACHÁ IRON KIDS - CT IRON KINGS\nCriança: ${agendamento.criancaNome} (${agendamento.criancaIdade} anos)\nResponsável: ${agendamento.responsavelNome} (${agendamento.responsavelTelefone})\nHorário: ${agendamento.horario}\nEntrada: ${horaCheckIn || 'Aguardando'}${agendamento.observacoes ? `\nCuidados: ${agendamento.observacoes}` : ''}`;
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
@@ -289,24 +289,28 @@ export const BadgeModal: React.FC<BadgeModalProps> = ({ agendamento, onClose }) 
 
         {/* Topo do Crachá */}
         <div className="text-center pb-4 border-b border-zinc-800">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-red-950/80 border border-red-800 text-red-500 mb-2">
-            <CrownIcon className="w-7 h-7" />
+          <div className="flex justify-center mb-2">
+            <img
+              src="/logo.svg"
+              alt="IRON KIDS"
+              className="w-16 h-16 object-contain filter drop-shadow-[0_2px_8px_rgba(215,25,33,0.35)]"
+            />
           </div>
           <h3 className="font-display font-black text-xs uppercase tracking-widest text-red-500">
             CT Iron Kings
           </h3>
-          <h2 className="font-display font-black text-lg text-white tracking-tight">
-            REINO MINI KINGS
+          <h2 className="font-display font-black text-xl text-white tracking-tight">
+            ESPAÇO IRON KIDS
           </h2>
           <p className="text-[10px] text-zinc-400 font-semibold uppercase">
-            Crachá de Identificação Kids
+            Crachá de Identificação do Atleta
           </p>
         </div>
 
         {/* Dados da Criança */}
         <div className="my-5 text-center bg-zinc-900/80 border border-zinc-800 p-4 rounded-2xl">
           <span className="text-[10px] uppercase tracking-wider text-zinc-400 font-bold block mb-1">
-            Mini King
+            Iron Kid
           </span>
           <h1 className="font-display font-black text-2xl text-white tracking-tight leading-tight">
             {agendamento.criancaNome}

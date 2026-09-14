@@ -39,7 +39,7 @@ export default function App() {
   // Recupera telefone salvo do cliente no localStorage
   useEffect(() => {
     try {
-      const fone = localStorage.getItem('mini_kings_responsavel_fone');
+      const fone = localStorage.getItem('iron_kids_responsavel_fone') || localStorage.getItem('mini_kings_responsavel_fone');
       if (fone) setSavedTelefone(fone);
     } catch {
       // Ignora
@@ -266,10 +266,10 @@ export default function App() {
                   Área da Recepção / Portaria
                 </span>
                 <h3 className="font-display text-lg font-black text-white">
-                  Lista de Presença dos Mini Kings
+                  Lista de Presença - IRON KIDS
                 </h3>
                 <p className="text-xs text-zinc-400">
-                  Marque o check-in quando o responsável chegar com a criança.
+                  Marque o check-in quando o responsável chegar com o pequeno atleta.
                 </p>
               </div>
               <button
@@ -313,10 +313,10 @@ export default function App() {
       <footer className="mt-auto border-t border-zinc-900 bg-[#08080a] py-6 px-4 text-center text-xs text-zinc-500">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <img src="/logo.svg" alt="CT IRON KINGS" className="w-5 h-5 object-contain" />
+            <img src="/logo.svg" alt="IRON KIDS" className="w-6 h-6 object-contain" />
             <span className="font-display font-black text-red-500 tracking-wider">CT IRON KINGS</span>
             <span>•</span>
-            <span className="text-zinc-400">Espaço Mini Kings</span>
+            <span className="text-zinc-400">Espaço IRON KIDS</span>
           </div>
 
           <div className="flex items-center gap-4 text-[11px] text-zinc-500">

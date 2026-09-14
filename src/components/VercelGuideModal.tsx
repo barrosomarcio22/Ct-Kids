@@ -24,7 +24,7 @@ VITE_FIREBASE_APP_ID=1:157116187285:web:f13d3859a3ddc0c5b1119c`;
 service cloud.firestore {
   match /databases/{database}/documents {
     match /agendamentos/{agendamentoId} {
-      // Leitura pública em tempo real das vagas do Reino
+      // Leitura pública em tempo real das vagas do Espaço IRON KIDS
       allow read: if true;
       // Criação de agendamento pelos responsáveis
       allow create: if request.resource.data.responsavelNome is string
