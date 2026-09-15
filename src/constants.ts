@@ -66,18 +66,27 @@ export function formatarDataExtenso(dataStr: string): string {
   }
 }
 
-// Mensagem padrão para suporte no WhatsApp da equipe do CT
+// WhatsApp oficial da recepção do CT Iron Kings
+export const WHATSAPP_RECEPCAO = '5521972637144';
+export const WHATSAPP_RECEPCAO_FORMATADO = '(21) 97263-7144';
+
+// Mensagem padrão para contato com a recepção do CT
 export const MENSAGEM_SUPORTE_CT =
-  'Olá equipe do CT Iron Kings! Tenho uma dúvida sobre o Espaço IRON KIDS (agendamento das crianças).';
+  'Olá Recepção do CT Iron Kings! Gostaria de tirar uma dúvida sobre o Espaço Kids.';
 
 /**
- * Gera link direto para o WhatsApp do suporte
+ * Gera link direto para o WhatsApp do suporte/recepção
  */
 export function getLinkWhatsAppSuporte(telefoneCustom?: string): string {
   const msg = encodeURIComponent(MENSAGEM_SUPORTE_CT);
-  const cleanPhone = telefoneCustom ? telefoneCustom.replace(/\D/g, '') : '';
-  if (cleanPhone) {
-    return `https://wa.me/${cleanPhone}?text=${msg}`;
-  }
-  return `https://wa.me/?text=${msg}`;
+  const cleanPhone = telefoneCustom ? telefoneCustom.replace(/\D/g, '') : WHATSAPP_RECEPCAO;
+  return `https://wa.me/${cleanPhone}?text=${msg}`;
+}
+
+/**
+ * Gera link direto enviando mensagem para a Recepção oficial
+ */
+export function getLinkWhatsAppRecepcao(mensagem: string): string {
+  const msg = encodeURIComponent(mensagem);
+  return `https://wa.me/${WHATSAPP_RECEPCAO}?text=${msg}`;
 }

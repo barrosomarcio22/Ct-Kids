@@ -38,22 +38,24 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="border-b border-zinc-800 bg-[#0d0d11]/95 sticky top-0 z-30 shadow-xl backdrop-blur-md">
       <div className="max-w-4xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between gap-4">
-        {/* Identidade Visual Limpa */}
-        <div className="flex items-center gap-3">
-          <img
-            src="/logo.svg"
-            alt="IRON KIDS - CT IRON KINGS"
-            className="w-12 h-12 sm:w-14 sm:h-14 object-contain filter drop-shadow-[0_2px_10px_rgba(215,25,33,0.35)] transition-transform hover:scale-105"
-          />
+        {/* Identidade Visual com Foco na Logo */}
+        <div className="flex items-center gap-3.5">
+          <div className="relative flex-shrink-0 flex items-center justify-center">
+            <img
+              src="/logo.svg"
+              alt="IRON KIDS - CT IRON KINGS"
+              className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-lg transition-transform hover:scale-105"
+            />
+          </div>
           <div>
-            <span className="font-display font-black text-[11px] text-red-500 tracking-wider uppercase block">
+            <span className="font-display font-black text-[10px] sm:text-[11px] text-red-500 tracking-wider uppercase block">
               CT IRON KINGS
             </span>
-            <h1 className="font-display text-xl sm:text-2xl font-black text-white tracking-tight leading-none flex items-center gap-1.5">
-              <span>IRON KIDS</span>
+            <h1 className="font-display text-xl sm:text-2xl font-black text-white tracking-tight leading-none">
+              IRON KIDS
             </h1>
-            <span className="text-[11px] text-zinc-400 block mt-0.5">
-              Espaço Kids & Agendamento de Treino
+            <span className="text-xs sm:text-sm text-zinc-300 font-medium block mt-0.5">
+              Espaço Kids
             </span>
           </div>
         </div>

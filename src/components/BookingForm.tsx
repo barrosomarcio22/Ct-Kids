@@ -11,7 +11,14 @@ import {
   TrashIcon,
   WhatsAppIcon,
 } from './Icons';
-import { HORARIOS_CT, formatarTelefone, formatarDataExtenso, getLinkWhatsAppSuporte } from '../constants';
+import {
+  HORARIOS_CT,
+  formatarTelefone,
+  formatarDataExtenso,
+  getLinkWhatsAppSuporte,
+  WHATSAPP_RECEPCAO,
+  WHATSAPP_RECEPCAO_FORMATADO,
+} from '../constants';
 import { CapacidadeSlot } from '../types';
 
 const STORAGE_RESPONSAVEL_NOME = 'mini_kings_responsavel_nome';
@@ -207,7 +214,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     }
   };
 
-  const handleCompartilharWhatsApp = () => {
+  const handleEnviarInformacoesRecepcao = () => {
     if (!reservaConfirmada) return;
 
     const criancasTexto = reservaConfirmada.criancas
@@ -217,16 +224,18 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     const plural = reservaConfirmada.criancas.length > 1;
 
     const msg = encodeURIComponent(
-      `*CT IRON KINGS - ESPAÇO IRON KIDS*\n\n` +
-      `✅ *${plural ? 'Vagas Agendadas com Sucesso!' : 'Vaga Agendada com Sucesso!'}*\n` +
-      `${criancasTexto}\n` +
+      `*CT IRON KINGS - ESPAÇO KIDS*\n` +
+      `👋 *NOVO AGENDAMENTO DE VAGA*\n\n` +
+      `Olá Recepção! Seguem as informações do agendamento realizado no sistema:\n\n` +
+      `👶 *${plural ? 'Crianças:' : 'Criança:'}*\n${criancasTexto}\n\n` +
       `📅 *Data:* ${reservaConfirmada.data}\n` +
       `⏰ *Horário:* ${reservaConfirmada.horario}\n` +
       `👤 *Responsável:* ${reservaConfirmada.responsavel}\n` +
-      (reservaConfirmada.observacoes ? `📝 *Observações:* ${reservaConfirmada.observacoes}\n` : '') +
-      `\nNos vemos no treino!`
+      `📱 *WhatsApp do Responsável:* ${responsavelTelefone}\n` +
+      (reservaConfirmada.observacoes ? `📝 *Observações/Cuidados:* ${reservaConfirmada.observacoes}\n` : '') +
+      `\n📍 Informações direcionadas para a Recepção (${WHATSAPP_RECEPCAO_FORMATADO}).`
     );
-    window.open(`https://wa.me/?text=${msg}`, '_blank');
+    window.open(`https://wa.me/${WHATSAPP_RECEPCAO}?text=${msg}`, '_blank');
   };
 
   return (
@@ -237,7 +246,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
           <img
             src="/logo.svg"
             alt="IRON KIDS"
-            className="w-12 h-12 sm:w-14 sm:h-14 object-contain filter drop-shadow-[0_2px_8px_rgba(215,25,33,0.3)] hidden xs:block"
+            className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-lg hidden xs:block"
           />
           <div>
             <span className="font-display font-black text-[10px] text-red-500 uppercase tracking-widest block">
@@ -320,21 +329,32 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             )}
           </div>
 
+          {/* Centralização de informações e contato na recepção */}
+          <div className="mt-3.5 p-3 rounded-xl bg-emerald-950/40 border border-emerald-800/60 text-xs">
+            <p className="font-semibold text-emerald-300 flex items-center gap-1.5">
+              <span>📲</span> Contato e Informações na Recepção
+            </p>
+            <p className="text-[11px] text-zinc-300 mt-1 leading-relaxed">
+              O contato e atendimento deste agendamento são centralizados no WhatsApp da recepção:{' '}
+              <strong className="text-white font-bold">{WHATSAPP_RECEPCAO_FORMATADO}</strong>.
+            </p>
+          </div>
+
           <div className="mt-4 flex flex-col sm:flex-row gap-2">
             <button
               type="button"
-              onClick={handleCompartilharWhatsApp}
-              className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition cursor-pointer"
+              onClick={handleEnviarInformacoesRecepcao}
+              className="flex-1 py-3 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-lg shadow-emerald-950/50 active:scale-98"
             >
               <WhatsAppIcon className="w-4 h-4" />
-              <span>Salvar Comprovante no WhatsApp</span>
+              <span>Enviar Informações para a Recepção {WHATSAPP_RECEPCAO_FORMATADO}</span>
             </button>
             <button
               type="button"
               onClick={() => setReservaConfirmada(null)}
               className="py-2.5 px-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold transition cursor-pointer"
             >
-              Fazer novo agendamento
+              Novo agendamento
             </button>
           </div>
         </div>
@@ -682,7 +702,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               : 'Confirmar Agendamento'}
           </button>
           <p className="text-center text-[11px] text-zinc-500 mt-2">
-            Ao chegar ao CT, basta apresentar o nome na recepção do Espaço IRON KIDS.
+            Ao chegar ao CT, basta apresentar o nome na recepção do Espaço Kids. Informações e contato centralizados no WhatsApp da recepção (21) 97263-7144.
           </p>
 
           {/* Link direto para Suporte CT no WhatsApp */}
@@ -694,7 +714,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               className="inline-flex items-center gap-1.5 text-xs text-emerald-400 hover:text-emerald-300 transition"
             >
               <WhatsAppIcon className="w-3.5 h-3.5" />
-              <span>Alguma dúvida sobre o Espaço Kids? Fale no WhatsApp com a equipe do CT</span>
+              <span>Dúvidas sobre o Espaço Kids? WhatsApp Recepção: <strong>(21) 97263-7144</strong></span>
             </a>
           </div>
         </div>

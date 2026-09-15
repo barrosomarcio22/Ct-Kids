@@ -1,323 +1,315 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
   <defs>
-    <!-- Sombra profunda do Emblema -->
-    <filter id="ironKidsShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.8" />
+    <!-- Filtro de Sombra Suave -->
+    <filter id="badgeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.45" />
     </filter>
 
-    <!-- Gradiente Metálico Cromado (Letras IRON e Coroa) -->
-    <linearGradient id="chrome3D" x1="0%" y1="0%" x2="0%" y2="100%">
+    <!-- Gradiente do Fundo do Escudo -->
+    <linearGradient id="shieldBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#23272F" />
+      <stop offset="50%" stop-color="#181B20" />
+      <stop offset="100%" stop-color="#0F1115" />
+    </linearGradient>
+
+    <!-- Gradiente da Borda Prateada / Cromada -->
+    <linearGradient id="silverBorder" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="25%" stop-color="#F3F4F6" />
-      <stop offset="55%" stop-color="#D1D5DB" />
-      <stop offset="85%" stop-color="#9CA3AF" />
-      <stop offset="100%" stop-color="#4B5563" />
+      <stop offset="30%" stop-color="#E2E8F0" />
+      <stop offset="70%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#64748B" />
     </linearGradient>
 
-    <!-- Gradiente Vermelho Sangue 3D (Letras KIDS) -->
-    <linearGradient id="kidsRed" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FF333D" />
-      <stop offset="35%" stop-color="#E6101B" />
-      <stop offset="80%" stop-color="#B3050E" />
-      <stop offset="100%" stop-color="#730208" />
-    </linearGradient>
-
-    <!-- Borda Prata do Escudo -->
-    <linearGradient id="shieldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="25%" stop-color="#E5E7EB" />
-      <stop offset="50%" stop-color="#9CA3AF" />
-      <stop offset="75%" stop-color="#4B5563" />
-      <stop offset="100%" stop-color="#D1D5DB" />
-    </linearGradient>
-
-    <!-- Fundo do Escudo Hexagonal -->
-    <linearGradient id="shieldBg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#232328" />
-      <stop offset="40%" stop-color="#18181D" />
-      <stop offset="100%" stop-color="#0E0E12" />
-    </linearGradient>
-
-    <!-- Gradiente da Camiseta Vermelha -->
-    <linearGradient id="shirtRed" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#B91C1C" />
-      <stop offset="100%" stop-color="#7F1D1D" />
+    <!-- Gradiente da Pele do Menino -->
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFDFC4" />
+      <stop offset="100%" stop-color="#F0B892" />
     </linearGradient>
 
     <!-- Gradiente do Cabelo Castanho -->
-    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#8D5B4C" />
-      <stop offset="50%" stop-color="#6E3B2C" />
-      <stop offset="100%" stop-color="#4A251B" />
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8D4925" />
+      <stop offset="50%" stop-color="#6B3416" />
+      <stop offset="100%" stop-color="#4E240D" />
     </linearGradient>
 
-    <!-- Gradiente da Pele -->
-    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFE0BD" />
-      <stop offset="100%" stop-color="#F5C6A5" />
+    <!-- Gradiente da Camiseta Vermelha -->
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#881313" />
+    </linearGradient>
+
+    <!-- Gradiente Vermelho Anilhas e KIDS -->
+    <linearGradient id="redGloss" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF3B30" />
+      <stop offset="50%" stop-color="#E11D48" />
+      <stop offset="100%" stop-color="#9F1239" />
+    </linearGradient>
+
+    <!-- Gradiente Letras IRON (Branco 3D) -->
+    <linearGradient id="ironTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="65%" stop-color="#F1F5F9" />
+      <stop offset="100%" stop-color="#CBD5E1" />
+    </linearGradient>
+
+    <!-- Gradiente Letras KIDS (Vermelho 3D) -->
+    <linearGradient id="kidsTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF4D4D" />
+      <stop offset="50%" stop-color="#E60000" />
+      <stop offset="100%" stop-color="#B30000" />
+    </linearGradient>
+
+    <!-- Gradiente da Coroa Prateada -->
+    <linearGradient id="crownSilver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#E2E8F0" />
+      <stop offset="80%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#475569" />
     </linearGradient>
   </defs>
 
-  <!-- ========================================== -->
-  <!-- 1. ESCUDO HEXAGONAL (CENTRO / DIREITA)     -->
-  <!-- ========================================== -->
-  <g filter="url(#ironKidsShadow)">
-    <!-- Borda Prateada Externa Chanfrada -->
-    <polygon points="340,95 485,180 485,385 340,470 195,385 195,180" 
-             fill="#111115" 
-             stroke="url(#shieldBorder)" 
-             stroke-width="12" 
-             stroke-linejoin="round" />
+  <g filter="url(#badgeShadow)">
 
-    <!-- Filete Interno Preto -->
-    <polygon points="340,105 475,185 475,378 340,460 205,378 205,185" 
+    <!-- ========================================== -->
+    <!-- 1. ESCUDO HEXAGONAL (BASE DO LOGO)         -->
+    <!-- ========================================== -->
+    <!-- Borda Externa Grossa Prateada/Preta com Chanfro -->
+    <polygon points="320,105 470,195 470,410 320,500 170,410 170,195" 
              fill="url(#shieldBg)" 
-             stroke="#000000" 
-             stroke-width="4" 
+             stroke="url(#silverBorder)" 
+             stroke-width="16" 
              stroke-linejoin="round" />
-  </g>
 
-  <!-- ========================================== -->
-  <!-- 2. TOPO DO ESCUDO: 3 ESTRELAS BRANCAS      -->
-  <!-- ========================================== -->
-  <g id="stars">
-    <!-- Estrela Esquerda -->
-    <polygon points="300,165 303,174 313,174 305,180 308,189 300,183 292,189 295,180 287,174 297,174" 
-             fill="#FFFFFF" stroke="#000000" stroke-width="1.5" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.5))" />
-    
-    <!-- Estrela Central (Mais Alta) -->
-    <polygon points="340,152 344,163 356,163 346,170 350,181 340,174 330,181 334,170 324,163 336,163" 
-             fill="#FFFFFF" stroke="#000000" stroke-width="1.8" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.6))" />
-    
-    <!-- Estrela Direita -->
-    <polygon points="380,165 383,174 393,174 385,180 388,189 380,183 372,189 375,180 367,174 377,174" 
-             fill="#FFFFFF" stroke="#000000" stroke-width="1.5" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.5))" />
-  </g>
+    <!-- Borda Preta de Contorno Interno -->
+    <polygon points="320,118 456,201 456,400 320,486 184,400 184,201" 
+             fill="none" 
+             stroke="#0B0D10" 
+             stroke-width="8" 
+             stroke-linejoin="round" />
 
-  <!-- ========================================== -->
-  <!-- 3. MASCOTE: MENINO COM COROA E HALTERES    -->
-  <!-- ========================================== -->
-  <!-- Braço e Haltere Esquerdo (Fundo/Atrás) -->
-  <g id="back-arm-barbell">
-    <!-- Barra metálica conectando as anilhas -->
-    <path d="M 120 310 L 80 280" stroke="#71717A" stroke-width="8" stroke-linecap="round" />
-    
-    <!-- Anilha Traseira -->
-    <g transform="translate(68, 260) rotate(-35)">
-      <!-- Anilha Vermelha -->
-      <ellipse cx="25" cy="25" rx="16" ry="34" fill="#C80C14" stroke="#000000" stroke-width="3" />
-      <ellipse cx="25" cy="25" rx="11" ry="24" fill="#E5E7EB" stroke="#71717A" stroke-width="2" />
-      <ellipse cx="25" cy="25" rx="6" ry="12" fill="#18181B" />
-    </g>
-  </g>
+    <!-- Filete Fino Branco/Prateado Interno -->
+    <polygon points="320,126 446,206 446,394 320,474 194,394 194,206" 
+             fill="none" 
+             stroke="#FFFFFF" 
+             stroke-width="3" 
+             stroke-opacity="0.7" 
+             stroke-linejoin="round" />
 
-  <!-- Tronco / Camiseta Vermelha do Mascote -->
-  <g id="boy-body">
-    <!-- Corpo / Peito -->
-    <path d="M 175 295 C 160 320 155 365 170 410 C 185 415 225 410 240 395 C 245 350 235 315 210 295 Z" 
-          fill="url(#shirtRed)" stroke="#000000" stroke-width="4" stroke-linejoin="round" />
-    <!-- Gola Redonda -->
-    <path d="M 180 295 C 195 305 210 305 220 295" stroke="#7F1D1D" stroke-width="4" fill="none" />
-  </g>
+    <!-- ========================================== -->
+    <!-- 2. MASCOTE: MENINO ATLETA (ESQUERDA)       -->
+    <!-- ========================================== -->
+    <g id="mascot">
+      <!-- Corpo / Tronco / Camiseta Vermelha do Menino -->
+      <path d="M 140 230 C 150 220 185 220 195 240 L 205 320 L 135 320 Z" 
+            fill="url(#shirtGrad)" stroke="#1F242D" stroke-width="4" stroke-linejoin="round" />
+      <!-- Gola da Camiseta -->
+      <path d="M 152 230 C 165 242 178 242 186 232" fill="none" stroke="#991B1B" stroke-width="4" />
 
-  <!-- Cabeça, Rosto e Cabelo do Mascote -->
-  <g id="boy-head">
-    <!-- Orelha Esquerda -->
-    <circle cx="155" cy="245" r="14" fill="url(#skinGrad)" stroke="#000000" stroke-width="3.5" />
-    <path d="M 152 240 C 150 245 156 250 157 245" stroke="#D4A373" stroke-width="2" fill="none" />
+      <!-- Braço Esquerdo segurando o Haltere -->
+      <!-- Antebraço -->
+      <path d="M 145 255 C 130 260 115 285 130 305 C 142 320 160 300 165 280 Z" 
+            fill="url(#skinGrad)" stroke="#1F242D" stroke-width="4" stroke-linejoin="round" />
 
-    <!-- Rosto -->
-    <ellipse cx="205" cy="235" rx="46" ry="48" fill="url(#skinGrad)" stroke="#000000" stroke-width="4" />
+      <!-- Mão segurando a barra do haltere -->
+      <ellipse cx="138" cy="296" rx="14" ry="12" fill="url(#skinGrad)" stroke="#1F242D" stroke-width="3.5" />
+      <path d="M 132 290 C 138 290 144 294 144 302" fill="none" stroke="#1F242D" stroke-width="2.5" />
 
-    <!-- Orelha Direita -->
-    <circle cx="252" cy="242" r="12" fill="url(#skinGrad)" stroke="#000000" stroke-width="3.5" />
+      <!-- HALTERE INFANTIL (PESO VERMELHO E PRATA) -->
+      <!-- Barra de Aço -->
+      <rect x="65" y="285" width="130" height="12" rx="4" fill="url(#silverBorder)" stroke="#1F242D" stroke-width="3" />
+      <!-- Anilha Externa Esquerda -->
+      <rect x="68" y="248" width="20" height="86" rx="8" fill="url(#redGloss)" stroke="#1F242D" stroke-width="4" />
+      <rect x="73" y="254" width="10" height="74" rx="4" fill="#FECDD3" opacity="0.4" />
+      <!-- Colar Prateado Externo -->
+      <rect x="88" y="260" width="8" height="62" rx="3" fill="url(#silverBorder)" stroke="#1F242D" stroke-width="2.5" />
 
-    <!-- Cabelo Castanho (Base Atrás) -->
-    <path d="M 160 215 C 150 185 180 155 220 160 C 255 165 265 190 260 225 C 245 200 230 205 205 200 C 180 195 170 210 160 215 Z" 
-          fill="url(#hairGrad)" stroke="#000000" stroke-width="4" />
+      <!-- Anilha Interna Direita (Frente ao Corpo) -->
+      <rect x="165" y="242" width="22" height="98" rx="8" fill="url(#redGloss)" stroke="#1F242D" stroke-width="4" />
+      <rect x="170" y="248" width="10" height="86" rx="4" fill="#FECDD3" opacity="0.4" />
+      <!-- Colar Prateado Interno -->
+      <rect x="157" y="256" width="8" height="70" rx="3" fill="url(#silverBorder)" stroke="#1F242D" stroke-width="2.5" />
 
-    <!-- Franja e Mechas do Cabelo -->
-    <path d="M 168 205 C 180 185 205 185 215 195 C 225 185 245 190 250 210 C 240 215 230 215 220 210 C 210 215 190 215 175 210 Z" 
-          fill="url(#hairGrad)" stroke="#000000" stroke-width="3" />
-    <!-- Mecha arrepiada topo -->
-    <path d="M 210 165 C 215 145 228 148 230 160" stroke="#000000" stroke-width="3.5" fill="none" />
+      <!-- Cabeça / Rosto do Menino -->
+      <!-- Orelha Esquerda -->
+      <circle cx="138" cy="195" r="13" fill="url(#skinGrad)" stroke="#1F242D" stroke-width="3.5" />
+      <path d="M 136 191 C 140 193 140 198 136 200" fill="none" stroke="#E09B74" stroke-width="2" />
 
-    <!-- Olho Esquerdo -->
-    <ellipse cx="188" cy="232" rx="8" ry="11" fill="#FFFFFF" stroke="#000000" stroke-width="2.5" />
-    <ellipse cx="189" cy="232" rx="5" ry="8" fill="#5C2C16" />
-    <circle cx="190" cy="230" r="3" fill="#000000" />
-    <circle cx="188" cy="228" r="1.8" fill="#FFFFFF" /> <!-- Brilho do olho -->
+      <!-- Formato do Rosto (Fofinho / Bochechudo) -->
+      <path d="M 144 180 C 144 145 185 140 200 150 C 215 160 220 185 218 205 C 215 235 160 240 148 215 C 144 205 144 190 144 180 Z" 
+            fill="url(#skinGrad)" stroke="#1F242D" stroke-width="4" stroke-linejoin="round" />
 
-    <!-- Olho Direito -->
-    <ellipse cx="224" cy="232" rx="8" ry="11" fill="#FFFFFF" stroke="#000000" stroke-width="2.5" />
-    <ellipse cx="225" cy="232" rx="5" ry="8" fill="#5C2C16" />
-    <circle cx="226" cy="230" r="3" fill="#000000" />
-    <circle cx="224" cy="228" r="1.8" fill="#FFFFFF" /> <!-- Brilho do olho -->
+      <!-- Cabelo Castanho Estilizado com Topete -->
+      <path d="M 142 175 C 138 150 155 130 180 126 C 205 122 225 140 220 170 C 212 165 205 166 198 160 C 190 155 185 165 175 160 C 165 155 158 168 142 175 Z" 
+            fill="url(#hairGrad)" stroke="#1F242D" stroke-width="4" stroke-linejoin="round" />
+      <!-- Mecha de Destaque no Topete -->
+      <path d="M 165 135 C 180 132 198 138 202 148" fill="none" stroke="#A05A32" stroke-width="3" stroke-linecap="round" />
 
-    <!-- Sobrancelhas Expressivas -->
-    <path d="M 180 216 C 186 212 195 214 198 217" stroke="#4A251B" stroke-width="3.5" stroke-linecap="round" fill="none" />
-    <path d="M 215 217 C 219 214 227 212 233 216" stroke="#4A251B" stroke-width="3.5" stroke-linecap="round" fill="none" />
+      <!-- Sobrancelhas Expressivas e Amigáveis -->
+      <path d="M 160 170 C 166 166 174 167 178 171" fill="none" stroke="#4E240D" stroke-width="3.5" stroke-linecap="round" />
+      <path d="M 194 171 C 198 167 206 167 212 171" fill="none" stroke="#4E240D" stroke-width="3.5" stroke-linecap="round" />
 
-    <!-- Narizinho Fofo -->
-    <path d="M 205 236 C 203 241 207 243 209 242" stroke="#D4A373" stroke-width="2.5" stroke-linecap="round" fill="none" />
+      <!-- Olhos Grandes Cartoon Brilhantes -->
+      <!-- Olho Esquerdo -->
+      <ellipse cx="170" cy="184" rx="7.5" ry="9.5" fill="#2A1810" stroke="#1F242D" stroke-width="1.5" />
+      <circle cx="172.5" cy="181" r="3" fill="#FFFFFF" />
+      <circle cx="168" cy="187" r="1.2" fill="#FFFFFF" />
 
-    <!-- Sorriso / Boca Alegre Aberta -->
-    <path d="M 192 248 C 196 268 218 268 222 248 Z" fill="#991B1B" stroke="#000000" stroke-width="2.5" />
-    <!-- Dentes Brancos -->
-    <path d="M 194 250 C 200 254 214 254 220 250 Z" fill="#FFFFFF" />
-    <!-- Língua Rosada -->
-    <path d="M 198 262 C 204 258 212 258 216 262 C 214 266 202 266 198 262 Z" fill="#F472B6" />
+      <!-- Olho Direito -->
+      <ellipse cx="202" cy="185" rx="7.5" ry="9.5" fill="#2A1810" stroke="#1F242D" stroke-width="1.5" />
+      <circle cx="204.5" cy="182" r="3" fill="#FFFFFF" />
+      <circle cx="200" cy="188" r="1.2" fill="#FFFFFF" />
 
-    <!-- Bochechas Coradas -->
-    <ellipse cx="177" cy="245" rx="7" ry="4" fill="#F87171" opacity="0.45" />
-    <ellipse cx="235" cy="245" rx="7" ry="4" fill="#F87171" opacity="0.45" />
-  </g>
+      <!-- Narizinho Bonitinho -->
+      <path d="M 186 186 C 188 190 190 190 192 187" fill="none" stroke="#C87A55" stroke-width="2.5" stroke-linecap="round" />
 
-  <!-- Coroa de Prata do Menino (Rei / King) -->
-  <g id="boy-crown" transform="translate(170, 125) rotate(-12)">
-    <!-- Base da Coroa -->
-    <path d="M 5 36 L 47 36 L 45 42 L 7 42 Z" fill="url(#chrome3D)" stroke="#000000" stroke-width="2.5" />
-    <!-- 3 Pontas Reais -->
-    <path d="M 7 36 L 2 16 L 16 26 L 26 8 L 36 26 L 50 16 L 45 36 Z" 
-          fill="url(#chrome3D)" stroke="#000000" stroke-width="2.5" stroke-linejoin="round" />
-    <!-- Joias nas pontas -->
-    <circle cx="2" cy="15" r="3" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
-    <circle cx="26" cy="7" r="3.5" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
-    <circle cx="50" cy="15" r="3" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
-    <!-- Detalhes na base -->
-    <circle cx="16" cy="39" r="1.8" fill="#DC2626" />
-    <circle cx="26" cy="39" r="1.8" fill="#FFFFFF" />
-    <circle cx="36" cy="39" r="1.8" fill="#DC2626" />
-  </g>
+      <!-- Bochechas Rosadas -->
+      <ellipse cx="162" cy="195" rx="6" ry="3.5" fill="#FF8A8A" opacity="0.55" />
+      <ellipse cx="210" cy="196" rx="6" ry="3.5" fill="#FF8A8A" opacity="0.55" />
 
-  <!-- Braço Frontal e Haltere Frontal (Levantando Peso) -->
-  <g id="front-arm-barbell">
-    <!-- Braço Musculoso Levantando -->
-    <path d="M 160 330 C 135 340 120 375 130 395 C 140 410 165 405 175 385 C 180 370 185 345 175 330 Z" 
-          fill="url(#skinGrad)" stroke="#000000" stroke-width="4" stroke-linejoin="round" />
-    <!-- Mão fechada segurando a barra -->
-    <ellipse cx="140" cy="385" rx="14" ry="12" fill="url(#skinGrad)" stroke="#000000" stroke-width="3" />
-    <path d="M 134 380 C 138 385 142 385 146 380" stroke="#000000" stroke-width="2" fill="none" />
+      <!-- Boca Sorridente com Língua -->
+      <path d="M 175 198 C 182 214 198 214 204 198 Z" fill="#7F1D1D" stroke="#1F242D" stroke-width="2.5" />
+      <!-- Dentes Superiores -->
+      <path d="M 178 199 Q 189 203 201 199" fill="#FFFFFF" />
+      <!-- Língua Rosada -->
+      <path d="M 183 208 C 187 204 194 204 197 208" fill="#F87171" />
 
-    <!-- Barra do Haltere Frontal -->
-    <path d="M 110 370 L 195 435" stroke="#71717A" stroke-width="9" stroke-linecap="round" />
-    
-    <!-- Anilha Frontal (Dupla: Vermelha + Prata) -->
-    <g transform="translate(145, 395) rotate(38)">
-      <!-- Anilha Vermelha -->
-      <ellipse cx="25" cy="25" rx="20" ry="40" fill="#E6101B" stroke="#000000" stroke-width="3.5" />
-      <ellipse cx="25" cy="25" rx="14" ry="28" fill="#D1D5DB" stroke="#374151" stroke-width="2.5" />
-      <ellipse cx="25" cy="25" rx="7" ry="14" fill="#18181B" stroke="#000000" stroke-width="1.5" />
+      <!-- COROA PRATEADA NA CABEÇA DO MENINO (REI MIRIM) -->
+      <g id="head-crown" transform="translate(138, 92) rotate(-14)">
+        <path d="M 8 36 L 56 36 L 52 42 L 12 42 Z" fill="url(#silverBorder)" stroke="#1F242D" stroke-width="2" />
+        <!-- 5 Pontas da Coroa -->
+        <polygon points="8,36 4,14 18,24 32,8 46,24 60,14 56,36" 
+                 fill="url(#silverBorder)" stroke="#1F242D" stroke-width="2.5" stroke-linejoin="round" />
+        <!-- Esferas no Topo -->
+        <circle cx="4" cy="14" r="3" fill="#FFFFFF" stroke="#1F242D" stroke-width="1.5" />
+        <circle cx="18" cy="24" r="2.5" fill="#FFFFFF" stroke="#1F242D" stroke-width="1.5" />
+        <circle cx="32" cy="8" r="3.5" fill="#FFFFFF" stroke="#1F242D" stroke-width="1.5" />
+        <circle cx="46" cy="24" r="2.5" fill="#FFFFFF" stroke="#1F242D" stroke-width="1.5" />
+        <circle cx="60" cy="14" r="3" fill="#FFFFFF" stroke="#1F242D" stroke-width="1.5" />
+      </g>
     </g>
 
-    <g transform="translate(85, 345) rotate(38)">
-      <!-- Anilha Menor na ponta -->
-      <ellipse cx="20" cy="20" rx="16" ry="32" fill="#B91C1C" stroke="#000000" stroke-width="3.5" />
-      <ellipse cx="20" cy="20" rx="10" ry="22" fill="#9CA3AF" stroke="#374151" stroke-width="2" />
+    <!-- ========================================== -->
+    <!-- 3. DETALHES SUPERIORES: 3 ESTRELAS         -->
+    <!-- ========================================== -->
+    <g id="top-stars">
+      <!-- Estrela Central (Maior) -->
+      <polygon points="320,154 324,164 335,165 327,172 329,183 320,177 311,183 313,172 305,165 316,164" 
+               fill="#FFFFFF" stroke="#1F242D" stroke-width="2" stroke-linejoin="round" />
+
+      <!-- Estrela Esquerda -->
+      <polygon points="278,168 281,176 290,177 283,183 285,191 278,186 271,191 273,183 266,177 275,176" 
+               fill="#FFFFFF" stroke="#1F242D" stroke-width="1.8" stroke-linejoin="round" />
+
+      <!-- Estrela Direita -->
+      <polygon points="362,168 365,176 374,177 367,183 369,191 362,186 355,191 357,183 350,177 359,176" 
+               fill="#FFFFFF" stroke="#1F242D" stroke-width="1.8" stroke-linejoin="round" />
     </g>
-  </g>
 
-  <!-- ========================================== -->
-  <!-- 4. TEXTO 3D: "IRON" EM PRATA CROMADA       -->
-  <!-- ========================================== -->
-  <g id="text-iron">
-    <!-- Camada de Sombra / 3D Profundo Preto -->
-    <text x="352" y="278" 
-          font-family="'Outfit', 'Plus Jakarta Sans', Arial, sans-serif" 
-          font-weight="900" 
-          font-size="88" 
-          letter-spacing="2" 
-          fill="#000000" 
-          stroke="#000000" 
-          stroke-width="12" 
-          stroke-linejoin="round" 
-          text-anchor="middle">IRON</text>
+    <!-- ========================================== -->
+    <!-- 4. TIPOGRAFIA 3D: 'IRON' (BRANCO/PRATA)    -->
+    <!-- ========================================== -->
+    <!-- Camada de Sombra e Contorno Preto Extrudado -->
+    <g id="iron-title">
+      <!-- Extrusão / Sombra 3D -->
+      <text x="348" y="294" 
+            font-family="'Montserrat', 'Arial Black', 'Impact', sans-serif" 
+            font-size="88" 
+            font-weight="900" 
+            letter-spacing="3" 
+            text-anchor="middle" 
+            fill="#0B0D10" 
+            stroke="#0B0D10" 
+            stroke-width="18" 
+            stroke-linejoin="round">IRON</text>
 
-    <!-- Camada de Extrusão 3D Cinza Escuro -->
-    <text x="350" y="275" 
-          font-family="'Outfit', 'Plus Jakarta Sans', Arial, sans-serif" 
-          font-weight="900" 
-          font-size="88" 
-          letter-spacing="2" 
-          fill="#374151" 
-          stroke="#1F2937" 
-          stroke-width="8" 
-          stroke-linejoin="round" 
-          text-anchor="middle">IRON</text>
+      <!-- Borda Chanfrada Prata Escura -->
+      <text x="348" y="290" 
+            font-family="'Montserrat', 'Arial Black', 'Impact', sans-serif" 
+            font-size="88" 
+            font-weight="900" 
+            letter-spacing="3" 
+            text-anchor="middle" 
+            fill="#94A3B8" 
+            stroke="#94A3B8" 
+            stroke-width="10" 
+            stroke-linejoin="round">IRON</text>
 
-    <!-- Face Principal: Branco / Prata Cromado 3D com Contorno Preto Forte -->
-    <text x="348" y="270" 
-          font-family="'Outfit', 'Plus Jakarta Sans', Arial, sans-serif" 
-          font-weight="900" 
-          font-size="88" 
-          letter-spacing="2" 
-          fill="url(#chrome3D)" 
-          stroke="#000000" 
-          stroke-width="6" 
-          stroke-linejoin="round" 
-          text-anchor="middle">IRON</text>
-  </g>
+      <!-- Face Principal Branco/Platina 3D -->
+      <text x="348" y="286" 
+            font-family="'Montserrat', 'Arial Black', 'Impact', sans-serif" 
+            font-size="88" 
+            font-weight="900" 
+            letter-spacing="3" 
+            text-anchor="middle" 
+            fill="url(#ironTextGrad)" 
+            stroke="#FFFFFF" 
+            stroke-width="2" 
+            stroke-linejoin="round">IRON</text>
+    </g>
 
-  <!-- ========================================== -->
-  <!-- 5. TEXTO 3D: "KIDS" EM VERMELHO SANGUE     -->
-  <!-- ========================================== -->
-  <g id="text-kids">
-    <!-- Camada de Sombra / 3D Profundo Preto -->
-    <text x="354" y="375" 
-          font-family="'Outfit', 'Plus Jakarta Sans', Arial, sans-serif" 
-          font-weight="900" 
-          font-size="96" 
-          letter-spacing="1" 
-          fill="#000000" 
-          stroke="#000000" 
-          stroke-width="14" 
-          stroke-linejoin="round" 
-          text-anchor="middle">KIDS</text>
+    <!-- ========================================== -->
+    <!-- 5. TIPOGRAFIA 3D: 'KIDS' (VERMELHO VIVO)   -->
+    <!-- ========================================== -->
+    <g id="kids-title">
+      <!-- Extrusão / Sombra 3D -->
+      <text x="348" y="382" 
+            font-family="'Montserrat', 'Arial Black', 'Impact', sans-serif" 
+            font-size="94" 
+            font-weight="900" 
+            letter-spacing="4" 
+            text-anchor="middle" 
+            fill="#0B0D10" 
+            stroke="#0B0D10" 
+            stroke-width="18" 
+            stroke-linejoin="round">KIDS</text>
 
-    <!-- Camada de Extrusão Vermelho Vinho Escuro -->
-    <text x="351" y="371" 
-          font-family="'Outfit', 'Plus Jakarta Sans', Arial, sans-serif" 
-          font-weight="900" 
-          font-size="96" 
-          letter-spacing="1" 
-          fill="#5B0307" 
-          stroke="#450A0A" 
-          stroke-width="8" 
-          stroke-linejoin="round" 
-          text-anchor="middle">KIDS</text>
+      <!-- Borda Vermelha Escura Chanfrada -->
+      <text x="348" y="378" 
+            font-family="'Montserrat', 'Arial Black', 'Impact', sans-serif" 
+            font-size="94" 
+            font-weight="900" 
+            letter-spacing="4" 
+            text-anchor="middle" 
+            fill="#7F1D1D" 
+            stroke="#7F1D1D" 
+            stroke-width="10" 
+            stroke-linejoin="round">KIDS</text>
 
-    <!-- Face Principal: Vermelho Sangue Vibrante com Contorno Preto Forte -->
-    <text x="348" y="365" 
-          font-family="'Outfit', 'Plus Jakarta Sans', Arial, sans-serif" 
-          font-weight="900" 
-          font-size="96" 
-          letter-spacing="1" 
-          fill="url(#kidsRed)" 
-          stroke="#000000" 
-          stroke-width="6.5" 
-          stroke-linejoin="round" 
-          text-anchor="middle">KIDS</text>
-  </g>
+      <!-- Face Principal Vermelho Vivo 3D -->
+      <text x="348" y="374" 
+            font-family="'Montserrat', 'Arial Black', 'Impact', sans-serif" 
+            font-size="94" 
+            font-weight="900" 
+            letter-spacing="4" 
+            text-anchor="middle" 
+            fill="url(#kidsTextGrad)" 
+            stroke="#FFA3A3" 
+            stroke-width="1.5" 
+            stroke-linejoin="round">KIDS</text>
+    </g>
 
-  <!-- ========================================== -->
-  <!-- 6. BASE DO ESCUDO: COROA PRATEADA          -->
-  <!-- ========================================== -->
-  <g id="shield-bottom-crown" transform="translate(315, 400) scale(0.75)">
-    <!-- Base -->
-    <path d="M 6 36 L 60 36 L 56 43 L 10 43 Z" fill="url(#chrome3D)" stroke="#000000" stroke-width="2" />
-    
-    <!-- 5 Pontas da Coroa Imperial -->
-    <path d="M 8 36 L 4 14 L 18 24 L 33 6 L 48 24 L 62 14 L 58 36 Z" 
-          fill="url(#chrome3D)" 
-          stroke="#000000" 
-          stroke-width="2.5" 
-          stroke-linejoin="round" />
+    <!-- ========================================== -->
+    <!-- 6. COROA PRATEADA NA BASE (SOB KIDS)       -->
+    <!-- ========================================== -->
+    <g id="bottom-crown" transform="translate(320, 436)">
+      <!-- Base da Coroa -->
+      <path d="M -28 16 L 28 16 L 25 21 L -25 21 Z" fill="url(#silverBorder)" stroke="#0B0D10" stroke-width="1.5" />
+      <circle cx="-16" cy="18.5" r="1.5" fill="#FFFFFF" />
+      <circle cx="0" cy="18.5" r="1.8" fill="#FFFFFF" />
+      <circle cx="16" cy="18.5" r="1.5" fill="#FFFFFF" />
 
-    <!-- Pérolas das Pontas -->
-    <circle cx="4" cy="13" r="3.2" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
-    <circle cx="18" cy="23" r="2.8" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
-    <circle cx="33" cy="5" r="4.2" fill="#FFFFFF" stroke="#000000" stroke-width="1.8" />
-    <circle cx="48" cy="23" r="2.8" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
-    <circle cx="62" cy="13" r="3.2" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
+      <!-- 5 Pontas da Coroa -->
+      <polygon points="-28,16 -32,2 -16,9 0,-5 16,9 32,2 28,16" 
+               fill="url(#silverBorder)" stroke="#0B0D10" stroke-width="2" stroke-linejoin="round" />
+
+      <!-- Esferas nas Pontas -->
+      <circle cx="-32" cy="2" r="2.5" fill="#FFFFFF" stroke="#0B0D10" stroke-width="1.2" />
+      <circle cx="-16" cy="9" r="2" fill="#FFFFFF" stroke="#0B0D10" stroke-width="1" />
+      <circle cx="0" cy="-5" r="3.5" fill="#FFFFFF" stroke="#0B0D10" stroke-width="1.2" />
+      <circle cx="16" cy="9" r="2" fill="#FFFFFF" stroke="#0B0D10" stroke-width="1" />
+      <circle cx="32" cy="2" r="2.5" fill="#FFFFFF" stroke="#0B0D10" stroke-width="1.2" />
+    </g>
+
   </g>
 </svg>

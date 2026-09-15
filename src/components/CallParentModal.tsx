@@ -1,6 +1,7 @@
 import React from 'react';
 import { Agendamento } from '../types';
 import { WhatsAppIcon, BellIcon, PhoneIcon } from './Icons';
+import { WHATSAPP_RECEPCAO_FORMATADO } from '../constants';
 
 interface CallParentModalProps {
   agendamento: Agendamento | null;
@@ -15,15 +16,15 @@ export const CallParentModal: React.FC<CallParentModalProps> = ({ agendamento, o
   const mensagensProntas = [
     {
       titulo: '🔔 Treino Finalizado / Buscar Criança',
-      texto: `Olá ${agendamento.responsavelNome}! Aqui é da equipe do Espaço IRON KIDS do CT Iron Kings. O horário do treino finalizou e ${agendamento.criancaNome} está aguardando você aqui na recepção do espaço kids! 😊`,
+      texto: `Olá ${agendamento.responsavelNome}! Aqui é da recepção do Espaço Kids do CT Iron Kings (${WHATSAPP_RECEPCAO_FORMATADO}). O treino finalizou e ${agendamento.criancaNome} está aguardando você com a gente na recepção! 😊`,
     },
     {
       titulo: '👶 Criança Chamando pelo Responsável',
-      texto: `Olá ${agendamento.responsavelNome}! Aqui é do Espaço IRON KIDS. ${agendamento.criancaNome} está chamando por você. Poderia dar uma passadinha aqui na recepção do espaço kids, por favor?`,
+      texto: `Olá ${agendamento.responsavelNome}! Aqui é da recepção do Espaço Kids (CT Iron Kings). ${agendamento.criancaNome} está chamando por você. Poderia dar uma passadinha aqui na recepção do espaço kids, por favor?`,
     },
     {
       titulo: '⚠️ Cuidados / Necessidade Específica',
-      texto: `Olá ${agendamento.responsavelNome}! Equipe do Espaço IRON KIDS aqui. Precisamos de você rapidinho na portaria para falar sobre ${agendamento.criancaNome}. Obrigado!`,
+      texto: `Olá ${agendamento.responsavelNome}! Aqui é da recepção do Espaço Kids (CT Iron Kings - WhatsApp ${WHATSAPP_RECEPCAO_FORMATADO}). Precisamos falar com você sobre ${agendamento.criancaNome}. Poderia comparecer à recepção? Obrigado!`,
     },
   ];
 
@@ -49,24 +50,38 @@ export const CallParentModal: React.FC<CallParentModalProps> = ({ agendamento, o
           </div>
           <div>
             <h3 className="font-display font-black text-white text-base">
-              Chamar Responsável no WhatsApp
+              Contato da Recepção com o Responsável
             </h3>
             <p className="text-xs text-zinc-400">
-              {agendamento.responsavelNome} • {agendamento.criancaNome}
+              {agendamento.responsavelNome} • Criança: {agendamento.criancaNome}
             </p>
           </div>
+        </div>
+
+        {/* Identificação da Recepção que faz o contato */}
+        <div className="mb-3 p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-800/70 text-xs flex items-center justify-between">
+          <span className="text-zinc-300 font-medium">Recepção emissora:</span>
+          <span className="text-emerald-400 font-bold">{WHATSAPP_RECEPCAO_FORMATADO}</span>
         </div>
 
         <div className="mb-4 p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs flex items-center justify-between">
           <span className="text-zinc-400 flex items-center gap-1.5">
             <PhoneIcon className="w-3.5 h-3.5 text-zinc-500" />
-            Telefone:
+            WhatsApp do Responsável:
           </span>
-          <span className="font-bold text-emerald-400">{agendamento.responsavelTelefone}</span>
+          <a
+            href={`https://wa.me/55${rawPhone}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-emerald-400 hover:underline flex items-center gap-1"
+          >
+            <WhatsAppIcon className="w-3.5 h-3.5" />
+            <span>{agendamento.responsavelTelefone}</span>
+          </a>
         </div>
 
         <p className="text-xs text-zinc-300 font-semibold mb-3">
-          Escolha uma mensagem rápida para enviar com 1 toque:
+          Escolha uma mensagem da recepção para enviar com 1 toque:
         </p>
 
         <div className="space-y-2.5">
@@ -83,7 +98,7 @@ export const CallParentModal: React.FC<CallParentModalProps> = ({ agendamento, o
                 </span>
                 <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/60">
                   <WhatsAppIcon className="w-3 h-3" />
-                  Enviar
+                  Enviar via WhatsApp
                 </span>
               </div>
               <p className="text-[11px] text-zinc-400 line-clamp-2 italic">

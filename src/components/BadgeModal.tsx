@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Agendamento } from '../types';
 import { CrownIcon, PrinterIcon, PhoneIcon, UserIcon, CheckIcon } from './Icons';
+import { WHATSAPP_RECEPCAO_FORMATADO } from '../constants';
 
 interface BadgeModalProps {
   agendamento: Agendamento | null;
@@ -210,7 +211,7 @@ export const BadgeModal: React.FC<BadgeModalProps> = ({ agendamento, onClose }) 
                   : ''
               }
 
-              <div class="rodape-tag">Segurança & Cuidado CT Iron Kings</div>
+              <div class="rodape-tag">Recepção WhatsApp: ${WHATSAPP_RECEPCAO_FORMATADO} • CT Iron Kings</div>
             </div>
           </body>
         </html>
@@ -240,7 +241,7 @@ export const BadgeModal: React.FC<BadgeModalProps> = ({ agendamento, onClose }) 
         printWindow.document.write(`
           <html>
             <body style="font-family:sans-serif; text-align:center; padding:20px;">
-              <h2>👑 CT IRON KINGS - ESPAÇO IRON KIDS</h2>
+              <h2>👑 CT IRON KINGS - ESPAÇO KIDS</h2>
               <hr/>
               <h1 style="font-size:26px; margin:15px 0;">${agendamento.criancaNome}</h1>
               <p><strong>Idade:</strong> ${agendamento.criancaIdade} anos</p>
@@ -248,6 +249,7 @@ export const BadgeModal: React.FC<BadgeModalProps> = ({ agendamento, onClose }) 
               <p><strong>Telefone:</strong> ${agendamento.responsavelTelefone}</p>
               <p><strong>Horário:</strong> ${agendamento.horario}</p>
               ${agendamento.observacoes ? `<p style="color:#b91c1c;"><strong>Obs:</strong> ${agendamento.observacoes}</p>` : ''}
+              <p style="font-size:12px; color:#555; margin-top:15px;">Recepção WhatsApp: ${WHATSAPP_RECEPCAO_FORMATADO}</p>
               <script>window.onload=function(){window.print();}</script>
             </body>
           </html>
@@ -264,7 +266,7 @@ export const BadgeModal: React.FC<BadgeModalProps> = ({ agendamento, onClose }) 
   };
 
   const handleCopySummary = async () => {
-    const text = `👑 CRACHÁ IRON KIDS - CT IRON KINGS\nCriança: ${agendamento.criancaNome} (${agendamento.criancaIdade} anos)\nResponsável: ${agendamento.responsavelNome} (${agendamento.responsavelTelefone})\nHorário: ${agendamento.horario}\nEntrada: ${horaCheckIn || 'Aguardando'}${agendamento.observacoes ? `\nCuidados: ${agendamento.observacoes}` : ''}`;
+    const text = `👑 CRACHÁ ESPAÇO KIDS - CT IRON KINGS\nCriança: ${agendamento.criancaNome} (${agendamento.criancaIdade} anos)\nResponsável: ${agendamento.responsavelNome} (${agendamento.responsavelTelefone})\nHorário: ${agendamento.horario}\nEntrada: ${horaCheckIn || 'Aguardando'}${agendamento.observacoes ? `\nCuidados: ${agendamento.observacoes}` : ''}\nRecepção Oficial: ${WHATSAPP_RECEPCAO_FORMATADO}`;
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
@@ -366,6 +368,11 @@ export const BadgeModal: React.FC<BadgeModalProps> = ({ agendamento, onClose }) 
               {agendamento.observacoes}
             </div>
           )}
+
+          <div className="mt-2 pt-2 border-t border-zinc-800 flex items-center justify-between text-[11px]">
+            <span className="text-zinc-500">Recepção:</span>
+            <span className="font-semibold text-emerald-400">{WHATSAPP_RECEPCAO_FORMATADO}</span>
+          </div>
         </div>
 
         {/* Rodapé e Ações */}

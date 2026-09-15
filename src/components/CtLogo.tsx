@@ -22,7 +22,7 @@ export const CtLogo: React.FC<CtLogoProps> = ({
       <img
         src="/logo.svg"
         alt="IRON KIDS - CT IRON KINGS"
-        className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(215,25,33,0.35)]"
+        className="w-full h-full object-contain drop-shadow-md"
         loading="eager"
       />
       {showSubtitle && (
@@ -33,8 +33,8 @@ export const CtLogo: React.FC<CtLogoProps> = ({
           <span className="font-display font-black text-white text-base tracking-tight uppercase mt-0.5">
             IRON KIDS
           </span>
-          <span className="text-[9px] text-zinc-400 font-semibold tracking-wider uppercase mt-0.5">
-            Espaço Kids Oficial
+          <span className="text-[10px] text-zinc-300 font-semibold tracking-wider uppercase mt-0.5">
+            Espaço Kids
           </span>
         </div>
       )}

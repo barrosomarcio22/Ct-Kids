@@ -222,7 +222,12 @@ export const QrCodeModal: React.FC<QrCodeModalProps> = ({ isOpen, onClose }) => 
                 </div>
               </div>
 
-              <div class="link-texto">${appUrl}</div>
+              <div class="link-texto">
+                ${appUrl}
+                <div style="font-size: 11px; color: #71717A; margin-top: 6px; font-weight: bold;">
+                  WhatsApp Recepção: (21) 97263-7144
+                </div>
+              </div>
             </div>
           </body>
         </html>
@@ -338,9 +343,14 @@ export const QrCodeModal: React.FC<QrCodeModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           {/* Link direto impresso */}
-          <p className="text-[10px] text-zinc-500 text-center mt-3 break-all">
-            {appUrl}
-          </p>
+          <div className="mt-3 text-center">
+            <p className="text-[10px] text-zinc-500 break-all">
+              {appUrl}
+            </p>
+            <p className="text-[11px] text-zinc-400 mt-1">
+              WhatsApp Recepção: <strong className="text-emerald-400 font-semibold">(21) 97263-7144</strong>
+            </p>
+          </div>
         </div>
 
         {/* BOTÕES DE AÇÃO (OCULTOS NA IMPRESSÃO) */}

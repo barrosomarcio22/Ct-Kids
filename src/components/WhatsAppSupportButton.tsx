@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { WhatsAppIcon } from './Icons';
-import { getLinkWhatsAppSuporte } from '../constants';
+import { getLinkWhatsAppSuporte, WHATSAPP_RECEPCAO_FORMATADO } from '../constants';
 
 export const WhatsAppSupportButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,24 +23,24 @@ export const WhatsAppSupportButton: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-display font-bold text-white text-xs">
-                  Suporte Espaço Kids
+                  Recepção Espaço Kids
                 </h4>
-                <p className="text-[10px] text-emerald-400 font-semibold">
-                  Equipe CT Iron Kings
+                <p className="text-[11px] text-emerald-400 font-bold">
+                  {WHATSAPP_RECEPCAO_FORMATADO}
                 </p>
               </div>
             </div>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="text-zinc-500 hover:text-white text-xs p-1"
+              className="text-zinc-500 hover:text-white text-xs p-1 cursor-pointer"
             >
               ✕
             </button>
           </div>
 
           <p className="text-xs text-zinc-300 leading-relaxed mb-3">
-            Precisa de ajuda com horários, roupas adequadas ou cuidados especiais para seu filho?
+            Precisa de ajuda com vagas, horários ou avisar a recepção? Fale direto conosco pelo WhatsApp!
           </p>
 
           <button
@@ -49,7 +49,7 @@ export const WhatsAppSupportButton: React.FC = () => {
             className="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition cursor-pointer shadow-lg shadow-emerald-950/50"
           >
             <WhatsAppIcon className="w-4 h-4" />
-            <span>Falar com a Equipe</span>
+            <span>Chamar Recepção {WHATSAPP_RECEPCAO_FORMATADO}</span>
           </button>
         </div>
       )}

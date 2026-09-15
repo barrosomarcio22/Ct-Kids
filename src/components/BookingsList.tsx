@@ -21,6 +21,7 @@ import { BadgeModal } from './BadgeModal';
 import { QuickCheckInModal } from './QuickCheckInModal';
 import { CallParentModal } from './CallParentModal';
 import { DailyReportModal } from './DailyReportModal';
+import { WHATSAPP_RECEPCAO_FORMATADO } from '../constants';
 
 interface BookingsListProps {
   agendamentos: Agendamento[];
@@ -141,12 +142,14 @@ export const BookingsList: React.FC<BookingsListProps> = ({
       <div className="flex flex-col gap-4 pb-4 border-b border-zinc-800/80 mb-5">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="font-display text-red-500 font-bold text-xs uppercase tracking-wider">
-                Espaço IRON KIDS
+                Espaço Kids
               </span>
               <span className="text-zinc-500 text-xs">•</span>
-              <span className="text-zinc-400 text-xs font-medium">Portaria & Recepção de Instrutores</span>
+              <span className="text-zinc-400 text-xs font-medium">Recepção & Portaria</span>
+              <span className="text-zinc-500 text-xs">•</span>
+              <span className="text-emerald-400 text-xs font-semibold">WhatsApp Oficial: {WHATSAPP_RECEPCAO_FORMATADO}</span>
             </div>
             <h2 className="font-display text-lg sm:text-xl font-black text-white tracking-tight flex items-center gap-2 mt-0.5">
               Controle de Presença & Agendamentos

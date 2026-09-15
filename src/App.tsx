@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Agendamento, CapacidadeSlot, FirebaseConnectionStatus } from './types';
-import { HORARIOS_CT, CAPACIDADE_PADRAO_POR_HORARIO, getHojeLocalString } from './constants';
+import {
+  HORARIOS_CT,
+  CAPACIDADE_PADRAO_POR_HORARIO,
+  getHojeLocalString,
+  getLinkWhatsAppSuporte,
+  WHATSAPP_RECEPCAO_FORMATADO,
+} from './constants';
 import {
   subscribeAgendamentos,
   salvarAgendamento,
@@ -316,10 +322,21 @@ export default function App() {
             <img src="/logo.svg" alt="IRON KIDS" className="w-6 h-6 object-contain" />
             <span className="font-display font-black text-red-500 tracking-wider">CT IRON KINGS</span>
             <span>•</span>
-            <span className="text-zinc-400">Espaço IRON KIDS</span>
+            <span className="text-zinc-400">Espaço Kids</span>
           </div>
 
           <div className="flex items-center gap-4 text-[11px] text-zinc-500">
+            <a
+              href={getLinkWhatsAppSuporte()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-400 hover:text-emerald-400 transition flex items-center gap-1"
+              title="Falar no WhatsApp da Recepção"
+            >
+              <span className="text-emerald-500">●</span>
+              <span>WhatsApp: {WHATSAPP_RECEPCAO_FORMATADO}</span>
+            </a>
+            <span>•</span>
             <button
               type="button"
               onClick={() => setShowGuideModal(true)}
